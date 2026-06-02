@@ -31,19 +31,26 @@ function App() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleCheckboxChange = (itemId) => {
+  const handleCheckboxChange = (itemId, type) => {
     setSelectedItems(prev => ({
       ...prev,
-      [itemId]: !prev[itemId]
+      [itemId]: {
+        ...prev[itemId],
+        [type]: !prev[itemId]?.[type]
+      }
     }))
   }
 
   const calculateTotal = () => {
     return orderItems.reduce((total, item) => {
-      if (selectedItems[item.id]) {
-        return total + item.price
+      let itemTotal = 0
+      if (selectedItems[item.id]?.self) {
+        itemTotal += item.price
       }
-      return total
+      if (selectedItems[item.id]?.family) {
+        itemTotal += item.price
+      }
+      return total + itemTotal
     }, 0)
   }
 
@@ -53,7 +60,14 @@ function App() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    const selectedItemsData = orderItems.filter(item => selectedItems[item.id]).map(i => i.label)
+    const selectedItemsData = orderItems.map(item => {
+      const self = selectedItems[item.id]?.self;
+      const family = selectedItems[item.id]?.family;
+      if (self && family) return `${item.label} (本人, 眷屬)`;
+      if (self) return `${item.label} (本人)`;
+      if (family) return `${item.label} (眷屬)`;
+      return null;
+    }).filter(Boolean)
     
     const dataToSubmit = {
       ...formData,
@@ -213,18 +227,25 @@ function App() {
               <div className="grid-header-row">
                 <div className="grid-cell"></div>
                 <div className="grid-cell header-cell">本人</div>
+                <div className="grid-cell header-cell">眷屬</div>
               </div>
               <div className="items-list">
                 {orderItems.map((item, index) => (
-                  <label key={item.id} className={`item-row grid-row ${index % 2 === 1 ? 'striped' : ''}`}>
+                  <div key={item.id} className={`item-row grid-row ${index % 2 === 1 ? 'striped' : ''}`}>
                     <span className="item-name grid-cell">{item.label}</span>
                     <div className="grid-cell center-column">
-                      <div className="checkbox-wrapper">
-                        <input type="checkbox" checked={!!selectedItems[item.id]} onChange={() => handleCheckboxChange(item.id)} />
+                      <label className="checkbox-wrapper">
+                        <input type="checkbox" checked={!!selectedItems[item.id]?.self} onChange={() => handleCheckboxChange(item.id, 'self')} />
                         <div className="custom-checkbox"></div>
-                      </div>
+                      </label>
                     </div>
-                  </label>
+                    <div className="grid-cell center-column">
+                      <label className="checkbox-wrapper">
+                        <input type="checkbox" checked={!!selectedItems[item.id]?.family} onChange={() => handleCheckboxChange(item.id, 'family')} />
+                        <div className="custom-checkbox"></div>
+                      </label>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
