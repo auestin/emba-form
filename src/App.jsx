@@ -39,13 +39,38 @@ function App() {
   }
 
   const handleCheckboxChange = (itemId, type) => {
-    setSelectedItems(prev => ({
-      ...prev,
-      [itemId]: {
-        ...prev[itemId],
-        [type]: !prev[itemId]?.[type]
+    setSelectedItems(prev => {
+      const isCurrentlyChecked = prev[itemId]?.[type] || false
+      const isChecking = !isCurrentlyChecked
+      
+      const newState = { ...prev }
+      
+      // Enforce exclusivity within groups
+      if (isChecking) {
+        const group1 = ['item-1', 'item-2', 'item-3', 'item-4', 'item-7'] // A1, A2, B1, B2, E
+        const group2 = ['item-5', 'item-6'] // C, D
+        
+        let targetGroup = null
+        if (group1.includes(itemId)) targetGroup = group1
+        else if (group2.includes(itemId)) targetGroup = group2
+        
+        if (targetGroup) {
+          targetGroup.forEach(id => {
+            if (newState[id]) {
+              newState[id] = { ...newState[id], [type]: false }
+            }
+          })
+        }
       }
-    }))
+      
+      const currentItemSelection = newState[itemId] || { self: false, family: false }
+      newState[itemId] = {
+        ...currentItemSelection,
+        [type]: isChecking
+      }
+      
+      return newState
+    })
   }
 
   const calculateTotal = () => {
