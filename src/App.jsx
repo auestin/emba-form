@@ -11,9 +11,10 @@ const orderItems = [
   { id: 'item-2', label: 'A2.一人一房_單人費用 11,800', price: 11800 },
   { id: 'item-3', label: 'B1.兩人一房,單人費用 5,650', price: 5650 },
   { id: 'item-4', label: 'B2.一人一房,單人費用 7,400', price: 7400 },
+  { id: 'item-7', label: 'E. 不跟團(自行安排),要參加12/6午餐,費用500', price: 500 },
+  { id: 'separator', isSeparator: true },
   { id: 'item-5', label: 'C. 全國EMBA賽事,報名費3,000', price: 3000 },
   { id: 'item-6', label: 'D. 選手之夜(不參加E馬跑步),費用1,000', price: 1000 },
-  { id: 'item-7', label: 'E. 不跟團(自行安排),要參加12/6午餐,費用500', price: 500 },
 ]
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
 
   const calculateTotal = () => {
     return orderItems.reduce((total, item) => {
+      if (item.isSeparator) return total
       let itemTotal = 0
       if (selectedItems[item.id]?.self) {
         itemTotal += item.price
@@ -93,6 +95,7 @@ function App() {
     setIsSubmitting(true)
     
     const selectedItemsData = orderItems.map(item => {
+      if (item.isSeparator) return null;
       const self = selectedItems[item.id]?.self;
       const family = selectedItems[item.id]?.family;
       if (self && family) return `${item.label} (本人, 眷屬)`;
@@ -263,23 +266,28 @@ function App() {
                 <div className="grid-cell header-cell">眷屬 (一人)</div>
               </div>
               <div className="items-list">
-                {orderItems.map((item, index) => (
-                  <div key={item.id} className={`item-row grid-row ${index % 2 === 1 ? 'striped' : ''}`}>
-                    <span className="item-name grid-cell">{item.label}</span>
-                    <div className="grid-cell center-column">
-                      <label className="checkbox-wrapper">
-                        <input type="checkbox" checked={!!selectedItems[item.id]?.self} onChange={() => handleCheckboxChange(item.id, 'self')} />
-                        <div className="custom-checkbox"></div>
-                      </label>
+                {orderItems.map((item, index) => {
+                  if (item.isSeparator) {
+                    return <div key={item.id} style={{ gridColumn: '1 / -1', borderBottom: '2px solid #ccc', margin: '8px 0' }}></div>
+                  }
+                  return (
+                    <div key={item.id} className={`item-row grid-row ${index % 2 === 1 ? 'striped' : ''}`}>
+                      <span className="item-name grid-cell">{item.label}</span>
+                      <div className="grid-cell center-column">
+                        <label className="checkbox-wrapper">
+                          <input type="checkbox" checked={!!selectedItems[item.id]?.self} onChange={() => handleCheckboxChange(item.id, 'self')} />
+                          <div className="custom-checkbox"></div>
+                        </label>
+                      </div>
+                      <div className="grid-cell center-column">
+                        <label className="checkbox-wrapper">
+                          <input type="checkbox" checked={!!selectedItems[item.id]?.family} onChange={() => handleCheckboxChange(item.id, 'family')} />
+                          <div className="custom-checkbox"></div>
+                        </label>
+                      </div>
                     </div>
-                    <div className="grid-cell center-column">
-                      <label className="checkbox-wrapper">
-                        <input type="checkbox" checked={!!selectedItems[item.id]?.family} onChange={() => handleCheckboxChange(item.id, 'family')} />
-                        <div className="custom-checkbox"></div>
-                      </label>
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
             
