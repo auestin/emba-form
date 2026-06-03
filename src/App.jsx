@@ -228,7 +228,7 @@ function App() {
               <div className="grid-header-row">
                 <div className="grid-cell"></div>
                 <div className="grid-cell header-cell">本人</div>
-                <div className="grid-cell header-cell">眷屬</div>
+                <div className="grid-cell header-cell">眷屬 (一人)</div>
               </div>
               <div className="items-list">
                 {orderItems.map((item, index) => (
