@@ -2,13 +2,13 @@ import { useState } from 'react'
 import './index.css'
 
 const orderItems = [
-  { id: 'item-1', label: 'A1. 8,550', price: 8550 },
-  { id: 'item-2', label: 'A2. 11,800', price: 11800 },
-  { id: 'item-3', label: 'B. 5,650', price: 5650 },
-  { id: 'item-4', label: 'B. 7,400', price: 7400 },
-  { id: 'item-5', label: 'C. 3,000', price: 3000 },
-  { id: 'item-6', label: 'D. 1,000', price: 1000 },
-  { id: 'item-7', label: 'E. 500', price: 500 },
+  { id: 'item-1', label: 'A1.兩人一房_單人費用 8,550', price: 8550 },
+  { id: 'item-2', label: 'A2.一人一房_單人費用 11,800', price: 11800 },
+  { id: 'item-3', label: 'B1.兩人一房,單人費用 5,650', price: 5650 },
+  { id: 'item-4', label: 'B2.一人一房,單人費用 7,400', price: 7400 },
+  { id: 'item-5', label: 'C. 全國EMBA賽事,報名費3,000', price: 3000 },
+  { id: 'item-6', label: 'D. 選手之夜(不參加E馬跑步),費用1,000', price: 1000 },
+  { id: 'item-7', label: 'E. 不跟團(自行安排),要參加12/6午餐,費用500', price: 500 },
 ]
 
 function App() {
