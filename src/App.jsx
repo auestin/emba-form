@@ -252,7 +252,8 @@ function App() {
               7.請於報名後請依所選項目費用,於6/5前繳費.<br />
               <span style={{ color: 'red', fontWeight: 'bold' }}>8. 此表格的計算為眷屬一人。 眷屬人數(若超過1人，漾跑社將主動與您聯繫)  先填表不匯款</span><br /><br />
               團費說明如下連結<br />
-              https://drive.google.com/drive/folders/13bahDQw0hZVc7lTEq8BTxkP7gVSZvbwD?usp=sharing<br /><br />
+              https://drive.google.com/drive/folders/13bahDQw0hZVc7lTEq8BTxkP7gVSZvbwD?usp=sharing<br />
+              團費包括住宿、交通、跟餐費<br /><br />
               請依照以下參選項目的金額，匯款至漾跑社帳號。<br />
               漾跑社收款帳號銀行:<br />
               合作金庫(006)龍潭分行戶名: 簡雅惠<br />
