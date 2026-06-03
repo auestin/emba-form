@@ -77,7 +77,7 @@ function App() {
       total: totalAmount
     }
 
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzawteJMWZ95hlTkQ8MgC_jI3CEzEAwaNTSIjXM98XPsDX7bsMU4eWg-9gubmFYnPZF/exec'
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoOu2BNbGoQRQ_E_3URtU9tyygEI03Eg1EKgQ1dyJHIcX2WcPW8Z7ib-X_evVEwKjY/exec'
 
     if (GOOGLE_SCRIPT_URL === '請替換成您的_APPS_SCRIPT_網址') {
       setTimeout(() => {
