@@ -196,7 +196,7 @@ function App() {
           </div>
 
           <div className="form-card form-group section-special">
-            <label className="question-title" style={{ display: 'none' }}>報名項目與費用 (隱藏標題以符合原稿)</label>
+            <label className="question-title">團費方案</label>
             <div className="question-desc" style={{marginBottom: '2rem'}}>
               A. 三天兩夜(12/5~12/7)<br />
               &nbsp;&nbsp;&nbsp;&nbsp;A1. 兩人一房_單人費用 8,550<br />
