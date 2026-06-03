@@ -1,3 +1,8 @@
+/**
+ * 全國EMBA馬拉松報名表單
+ * Version: v2.0
+ * Last Updated: 2026-06-03 15:45
+ */
 import { useState } from 'react'
 import './index.css'
 
