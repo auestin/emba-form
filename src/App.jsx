@@ -215,7 +215,7 @@ function App() {
               5.選擇C及D方案者,於參賽報名前可退費，報名後不予退款。<br />
               6.選擇E者,報名後因事需取消者,不予退款,做為選手之贊助金。<br />
               7.請於報名後請依所選項目費用,於6/5前繳費.<br />
-              8. 此表格的計算為眷屬一人。 眷屬人數(若超過1人，漾跑社將主動與您聯繫)  先填表不匯款<br /><br />
+              <span style={{ color: 'red', fontWeight: 'bold' }}>8. 此表格的計算為眷屬一人。 眷屬人數(若超過1人，漾跑社將主動與您聯繫)  先填表不匯款</span><br /><br />
               團費說明如下連結<br />
               https://drive.google.com/drive/folders/13bahDQw0hZVc7lTEq8BTxkP7gVSZvbwD?usp=sharing<br /><br />
               請依照以下參選項目的金額，匯款至漾跑社帳號。<br />
