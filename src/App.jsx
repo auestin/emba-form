@@ -20,6 +20,7 @@ function App() {
     contactInfo: '',
     accommodationDetails: '',
     bankAccount: '',
+    insuranceInfo: '',
     notes: ''
   })
   const [selectedItems, setSelectedItems] = useState({})
@@ -261,6 +262,13 @@ function App() {
             <label className="question-title">匯款帳號後五碼及匯款金額 <span className="required">*</span></label>
             <div className="input-wrapper">
               <input type="text" name="bankAccount" value={formData.bankAccount} onChange={handleInputChange} required placeholder="您的回答" />
+            </div>
+          </div>
+
+          <div className="form-card form-group">
+            <label className="question-title">請填寫保險資料 (本人/眷屬)  姓名  身分證字號  出生年月日  電話 <span className="required">*</span></label>
+            <div className="input-wrapper">
+              <textarea name="insuranceInfo" value={formData.insuranceInfo} onChange={handleInputChange} rows="3" required placeholder="您的回答"></textarea>
             </div>
           </div>
 
