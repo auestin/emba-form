@@ -20,7 +20,8 @@ function App() {
     contactInfo: '',
     accommodationDetails: '',
     bankAccount: '',
-    insuranceInfo: '',
+    insuranceInfoSelf: '',
+    insuranceInfoFamily: '',
     notes: ''
   })
   const [selectedItems, setSelectedItems] = useState({})
@@ -266,9 +267,16 @@ function App() {
           </div>
 
           <div className="form-card form-group">
-            <label className="question-title">請填寫保險資料 (本人/眷屬)  姓名  身分證字號  出生年月日  電話 <span className="required">*</span></label>
+            <label className="question-title">請填寫保險資料 (本人)  姓名  身分證字號  出生年月日  電話 <span className="required">*</span></label>
             <div className="input-wrapper">
-              <textarea name="insuranceInfo" value={formData.insuranceInfo} onChange={handleInputChange} rows="3" required placeholder="您的回答"></textarea>
+              <textarea name="insuranceInfoSelf" value={formData.insuranceInfoSelf} onChange={handleInputChange} rows="2" required placeholder="您的回答"></textarea>
+            </div>
+          </div>
+
+          <div className="form-card form-group">
+            <label className="question-title">請填寫保險資料 (眷屬)  姓名  身分證字號  出生年月日  電話</label>
+            <div className="input-wrapper">
+              <textarea name="insuranceInfoFamily" value={formData.insuranceInfoFamily} onChange={handleInputChange} rows="2" placeholder="您的回答"></textarea>
             </div>
           </div>
 
